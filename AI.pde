@@ -24,7 +24,7 @@ class AI{
         if(depth >= maxDepth){
             return gb.EvaluateBoard(isBlack);
         }
-        int maxscore = -100000;
+        int maxScore = -100000;
         int maxScoreIndex = 0;
         ArrayList<GameBoard> potentialboards = new ArrayList<GameBoard>();
         potentialboards = gb.generateNewBoards(gb,isBlack);
@@ -47,7 +47,7 @@ class AI{
             bestNextBoard = potentialboards.get(maxScoreIndex).clone();
         }
         //println(BestBoards.get(0));
-        return maxscore;
+        return maxScore;
 
     }
 
@@ -55,20 +55,20 @@ class AI{
                 if(depth >= maxDepth){
                     return gb.EvaluateBoard(isBlack);
         }
-        int worstscore = 100000;
+        int worstScore = 100000;
         ArrayList<GameBoard> potentialboards = new ArrayList<GameBoard>();
         potentialboards = gb.generateNewBoards(gb,!isBlack);
 
         for(int i = 0; i< potentialboards.size(); i++){
             if(Max(potentialboards.get(i).clone(),depth + 1) < worstscore){
-                worstscore = Max(potentialboards.get(i).clone(),depth + 1);
+                worstScore = Max(potentialboards.get(i).clone(),depth + 1);
 
             }
         }
 
 
 
-        return worstscore;
+        return worstScore;
     }
 
 
